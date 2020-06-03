@@ -105,14 +105,13 @@ add_custom_command(
 # Create Flight Tasks Library
 ###########################################
 
-add_compile_options(
-	-Wno-cast-align
-	) # TODO: fix and enable
-
 px4_add_library(FlightTasks
 	FlightTasks.cpp
+	FlightTasks.hpp
 	FlightTasks_generated.cpp
 )
+
+target_include_directories(FlightTasks PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 # add directories to target
 target_include_directories(FlightTasks PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})

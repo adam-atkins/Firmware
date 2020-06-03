@@ -32,10 +32,27 @@
 ############################################################################
 
 px4_add_library(mathlib
-	math/test/test.cpp
-	math/matrix_alg.cpp
 	math/filter/LowPassFilter2p.cpp
+	math/filter/LowPassFilter2p.hpp
+	math/filter/LowPassFilter2pArray.hpp
 	math/filter/LowPassFilter2pVector3f.cpp
+	math/filter/LowPassFilter2pVector3f.hpp
+	math/filter/NotchFilter.hpp
+	math/filter/NotchFilterArray.hpp
+
+	math/test/test.cpp
+	math/test/test.cpp
+
+	math/Functions.hpp
+	math/Limits.hpp
+	math/matrix_alg.cpp
+	math/matrix_alg.h
+	math/SearchMin.hpp
+	math/TrajMath.hpp
+
+	mathlib.h
 )
+
+target_compile_options(mathlib PRIVATE ${MAX_CUSTOM_OPT_LEVEL})
 
 px4_add_unit_gtest(SRC math/filter/NotchFilterTest.cpp)

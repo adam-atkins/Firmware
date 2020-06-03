@@ -39,6 +39,7 @@ px4_add_module(
 	MAIN mc_pos_control
 	COMPILE_FLAGS
 		-Wno-implicit-fallthrough # TODO: fix and remove
+		${MAX_CUSTOM_OPT_LEVEL}
 	SRCS
 		mc_pos_control_main.cpp
 	DEPENDS

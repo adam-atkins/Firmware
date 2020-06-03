@@ -36,8 +36,10 @@ add_compile_options(
 	) # TODO: remove once io_timer_handlerX are used
 
 px4_add_library(arch_io_pins
+	input_capture.c
 	io_timer.c
 	pwm_servo.c
 	pwm_trigger.c
-	input_capture.c
 )
+
+target_compile_options(arch_io_pins PRIVATE ${MAX_CUSTOM_OPT_LEVEL})

@@ -40,12 +40,12 @@ add_subdirectory(NullMixer)
 add_subdirectory(SimpleMixer)
 
 add_library(mixer
-	MixerGroup.cpp
-	MixerGroup.hpp
 	load_mixer_file.cpp
 	mixer_load.h
+	MixerGroup.cpp
+	MixerGroup.hpp
 )
-
+target_compile_options(mixer PRIVATE ${MAX_CUSTOM_OPT_LEVEL})
 target_link_libraries(mixer
 	PRIVATE
 		HelicopterMixer

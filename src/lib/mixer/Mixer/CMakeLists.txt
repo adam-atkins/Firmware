@@ -36,3 +36,4 @@ add_library(Mixer
 	Mixer.hpp
 )
 add_dependencies(Mixer prebuild_targets)
+target_compile_options(Mixer PRIVATE ${MAX_CUSTOM_OPT_LEVEL})

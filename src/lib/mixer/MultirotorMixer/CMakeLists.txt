@@ -92,6 +92,7 @@ add_library(MultirotorMixer
 	${CMAKE_CURRENT_BINARY_DIR}/mixer_multirotor_normalized.generated.h
 	${CMAKE_CURRENT_BINARY_DIR}/mixer_multirotor_6dof.generated.h
 )
+target_compile_options(MultirotorMixer PRIVATE ${MAX_CUSTOM_OPT_LEVEL})
 target_link_libraries(MultirotorMixer PRIVATE Mixer)
 target_include_directories(MultirotorMixer PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 add_dependencies(MultirotorMixer mixer_gen mixer_gen_6dof prebuild_targets)

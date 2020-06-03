@@ -35,6 +35,7 @@ px4_add_library(PositionControl
 	PositionControl.cpp
 	ControlMath.cpp
 )
+target_include_directories(PositionControl PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(PositionControl
 	PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}

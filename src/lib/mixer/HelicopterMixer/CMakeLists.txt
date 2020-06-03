@@ -35,5 +35,6 @@ add_library(HelicopterMixer
 	HelicopterMixer.cpp
 	HelicopterMixer.hpp
 )
+target_compile_options(HelicopterMixer PRIVATE ${MAX_CUSTOM_OPT_LEVEL})
 target_link_libraries(HelicopterMixer PRIVATE Mixer)
 add_dependencies(HelicopterMixer prebuild_targets)

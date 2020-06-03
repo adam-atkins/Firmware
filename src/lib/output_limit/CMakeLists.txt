@@ -31,4 +31,9 @@
 #
 ############################################################################
 
-px4_add_library(output_limit output_limit.cpp)
+px4_add_library(output_limit
+	output_limit.cpp
+	output_limit.h
+)
+
+target_compile_options(output_limit PRIVATE ${MAX_CUSTOM_OPT_LEVEL})

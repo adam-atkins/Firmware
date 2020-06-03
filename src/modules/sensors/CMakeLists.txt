@@ -41,6 +41,8 @@ add_subdirectory(vehicle_imu)
 px4_add_module(
 	MODULE modules__sensors
 	MAIN sensors
+	COMPILE_OPTIONS
+		${MAX_CUSTOM_OPT_LEVEL}
 	SRCS
 		voted_sensors_update.cpp
 		sensors.cpp

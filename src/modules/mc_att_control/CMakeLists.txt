@@ -37,8 +37,10 @@ px4_add_module(
 	MODULE modules__mc_att_control
 	MAIN mc_att_control
 	COMPILE_FLAGS
+		${MAX_CUSTOM_OPT_LEVEL}
 	SRCS
 		mc_att_control_main.cpp
+		mc_att_control.hpp
 	DEPENDS
 		mathlib
 		AttitudeControl

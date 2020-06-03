@@ -33,10 +33,12 @@
 px4_add_module(
 	MODULE drivers__dshot
 	MAIN dshot
-	STACK_MAIN 1200
+	COMPILE_FLAGS
+		${MAX_CUSTOM_OPT_LEVEL}
 	SRCS
 		dshot.cpp
 		telemetry.cpp
+		telemetry.h
 	DEPENDS
 		arch_io_pins
 		arch_dshot

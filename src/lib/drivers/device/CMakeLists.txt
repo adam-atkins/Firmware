@@ -33,31 +33,49 @@
 
 set(SRCS_PLATFORM)
 if (${PX4_PLATFORM} STREQUAL "nuttx")
-	if ("${CONFIG_I2C}" STREQUAL "y")
-		list(APPEND SRCS_PLATFORM nuttx/I2C.cpp)
+	if(CONFIG_I2C STREQUAL "y")
+		list(APPEND SRCS_PLATFORM
+			nuttx/I2C.cpp
+			nuttx/I2C.hpp
+		)
 	endif()
 
-	if ("${CONFIG_SPI}" STREQUAL "y")
-		list(APPEND SRCS_PLATFORM nuttx/SPI.cpp)
+	if(CONFIG_SPI STREQUAL "y")
+		list(APPEND SRCS_PLATFORM
+			nuttx/SPI.cpp
+			nuttx/SPI.hpp
+		)
 	endif()
 elseif((${PX4_PLATFORM} MATCHES "qurt"))
 	list(APPEND SRCS_PLATFORM
 		qurt/I2C.cpp
+		qurt/I2C.hpp
 		qurt/SPI.cpp
+		qurt/SPI.hpp
 	)
-elseif(UNIX AND NOT APPLE AND NOT (${PX4_PLATFORM} MATCHES "qurt")) #TODO: add linux PX4 platform type
-	# Linux I2Cdev and SPIdev
+elseif(UNIX AND NOT APPLE AND NOT (${PX4_PLATFORM} MATCHES "qurt"))
+	# TODO: add linux PX4 platform type
 	list(APPEND SRCS_PLATFORM
 		posix/I2C.cpp
+		posix/I2C.hpp
 		posix/SPI.cpp
+		posix/SPI.hpp
 	)
 endif()
 
 px4_add_library(drivers__device
 	CDev.cpp
+	CDev.hpp
+	device.h
+	Device.hpp
+	i2c.h
 	ringbuffer.cpp
+	ringbuffer.h
+	spi.h
 	${SRCS_PLATFORM}
-	)
+)
+
+target_compile_options(drivers__device PRIVATE ${MAX_CUSTOM_OPT_LEVEL})
 
 if (${PX4_PLATFORM} STREQUAL "nuttx")
 	target_link_libraries(drivers__device PRIVATE nuttx_arch)
